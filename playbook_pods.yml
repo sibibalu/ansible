@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Get the pods.
+      command: kubectl get po --namespace kube-system -o wide
+      register: pods
+      changed_when: false
+
+    - name: Print the pods in kube-system.
+      debug:
+        msg: "{{ pods.stdout.split('\n') }}"
