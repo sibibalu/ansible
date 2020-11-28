@@ -11,4 +11,3 @@
     - name: Print the nodes.
       debug:
         msg: "{{ nodes.stdout.split('\n') }}"
----
