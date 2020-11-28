@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Get the nodes.
+      command: kubectl get no
+      register: nodes
+      changed_when: false
+
+    - name: Print the nodes.
+      debug:
+        msg: "{{ nodes.stdout.split('\n') }}"
+---
